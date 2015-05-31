@@ -1,0 +1,41 @@
+<?php 
+	$a = 3+4*5;
+	$e = 1+12/((7+2)/3)+(6-2);
+	$i = sqrt (9)+ sqrt(16);
+	$b = 8/4+2*3;
+	$f = 3+16/2+5;
+	$j = 21 / 4 / 2;
+	$c = 2*(10-3*3)-1;
+	$g = 24 / 4-2;
+	$d = 5*(3+(2+3))/2+1;
+	$h = 11 % 4+9 / 3;
+
+	echo "3+4*5"." resultado = ".$a;
+	echo "<br>";
+	echo "<br>";
+	echo "1+12/((7+2)/3)+(6-2)"." resultado = ".$e;
+	echo "<br>";
+	echo "<br>";
+	echo "sqrt (9)+ sqrt(16)"." resultado = ".$i;
+	echo "<br>";
+	echo "<br>";
+	echo "8/4+2*3"." resultado = ".$b;
+	echo "<br>";
+	echo "<br>";
+	echo "3+16/2+5"." resultado = ".$f;
+	echo "<br>";
+	echo "<br>";
+	echo "21 / 4 / 2"." resultado = ".$j;
+	echo "<br>";
+	echo "<br>";
+	echo "2*(10-3*3)-1"." resultado = ".$c;
+	echo "<br>";
+	echo "<br>";
+	echo "24 / 4-2"." resultado = ".$g;
+	echo "<br>";
+	echo "<br>";
+	echo "5*(3+(2+3))/2+1"." resultado = ".$d;
+	echo "<br>";
+	echo "<br>";
+	echo "11 % 4+9 / 3"." resultado = ".$h;
+ ?>
