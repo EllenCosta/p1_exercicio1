@@ -6,9 +6,23 @@ if(!isset($_SESSION["usuario"])){
 
 	if (isset($_REQUEST["cadastrar"])) {
 
-		setcookie("cod",$_REQUEST["cod"]);
-		setcookie("cliente",$_REQUEST["nomecliente"]);
-		setcookie("email",$_REQUEST["emailcliente"]);
+		if(isset($_COOKIE["pessoa"])){
+			$array = unserialize($_COOKIE["pessoa"]);
+			array_push($array, array("cod" => $_POST["cod"], "nome" => $_POST["nomepessoa"], "email" => $_POST["emailpessoa"]));
+			$value = serialize($array);
+			setcookie("pessoa", $value);
+		}else{
+			$array = array(array("cod" => $_POST["cod"], "nome" => $_POST["nomepessoa"], "email" => $_POST["emailpessoa"]));
+			$value = serialize($array);
+			setcookie("pessoa", $value);
+		}
+
+
+
+
+		#setcookie("cod[".$_POST["cod"]."]",$_POST["cod"]);
+		#setcookie("nome[".$_POST["nomepessoa"]."]",$_POST["nomepessoa"]);
+		#setcookie("email[".$_POST["emailpessoa"]."]",$_POST["emailpessoa"]);
 
 		header("Location: lista.php");
 
@@ -20,7 +34,7 @@ if(!isset($_SESSION["usuario"])){
  <head>
  	<meta charset="utf-8">
  	<title>cadastro usuário</title>
-		<style>
+	<style>
 		#conteudo{ 
 			
 			position:absolute;
@@ -31,7 +45,7 @@ if(!isset($_SESSION["usuario"])){
 
 		}
 
-		</style>
+	</style>
  </head>
  <body>
  	
@@ -43,8 +57,8 @@ if(!isset($_SESSION["usuario"])){
 		<form method="post">
 			
 			<label for="cod">Cod: <input type="text" name="cod"></label>
-			<label for="nomecliente">Nome: <input type="text" name="nomecliente"></label>
-	 		<label for="emailcliente">Email: <input type="text" name="emailcliente"></label>
+			<label for="nomepessoa">Nome: <input type="text" name="nomepessoa"></label>
+	 		<label for="emailpessoa">Email: <input type="text" name="emailpessoa"></label>
 	 		<input type="submit" name="cadastrar" value="cadastrar">
 			
 		</form>

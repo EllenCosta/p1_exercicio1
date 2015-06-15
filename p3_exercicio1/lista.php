@@ -1,19 +1,13 @@
 <?php
-$cod="";
-$cliente="";
-$email="";
-
-if(isset($_COOKIE["cod"])){$cod=$_COOKIE["cod"];}
-if(isset($_COOKIE["cliente"])){$cliente=$_COOKIE["cliente"];}
-if(isset($_COOKIE["email"])){$email=$_COOKIE["email"];}
-
-?>
-<?php 
 session_start();
 if(!isset($_SESSION["usuario"])){
 	header("location: index.php");
 }
- ?>
+
+$array = unserialize($_COOKIE["pessoa"]);
+#var_dump($array);
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,21 +31,23 @@ if(!isset($_SESSION["usuario"])){
 
 	<div id="conteiner">
 
+
 		<table border=1 width=40% cellspacing=0 width="100%">
 		
-		<tr align="center">
-			<td><b>Cod</b></td>
-			<td><b>Nome</b></td>
-			<td><b>Email</b></td>
-		</tr>
-			
-		<tr>
-			<td align="center"><?php echo $cod; ?></td>
-			<td align="center"><?php echo $cliente; ?></td>
-			<td align="center"><?php echo $email; ?></td>
-		</tr>
-		
-	</table>
+			<tr align="center">
+				<td><b>Cod</b></td>
+				<td><b>Nome</b></td>
+				<td><b>Email</b></td>
+			</tr>
+
+			<?php for ($i=0; $i < count($array) ; $i++) { ?>	
+				<tr> 
+					<td align="center"><?php echo $array[$i]["cod"] ?></td>
+					<td align="center"><?php echo $array[$i]["nome"] ?></td>
+					<td align="center"><?php echo $array[$i]["email"] ?></td>
+				</tr>
+			<?php } ?>
+		</table>
 		<br>
 		<a href="cadastro.php">Cadastrar novo cliente.</a><br>
 		<a href="sair.php">Sair</a>
